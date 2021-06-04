@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emanuel.yourmovie.databinding.ActivityMovieBinding
+import com.squareup.picasso.Picasso
 
 class MovieActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MovieActivity : AppCompatActivity() {
 
         val viewModel: MoviesViewModel by viewModels()
 
-        viewModel.movieLiveData.observe(this) {
+        viewModel.similarMoviesLiveData.observe(this) {
             it?.let { similarMovies ->
                 with(binding.recyclerSimilarMovies) {
                     layoutManager = LinearLayoutManager(this@MovieActivity, RecyclerView.VERTICAL, false)
@@ -30,6 +31,17 @@ class MovieActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.moviesLiveData.observe(this) {
+            it?.let { movie ->
+                binding.textViewMovieTitle.text = movie.title
+                binding.textViewLikes.text = "${movie.vote_count} likes"
+                binding.textViewPopularity.text = "${movie.popularity} views"
+                Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}")
+                    .into(binding.imageViewMovie)
+            }
+        }
+
+        viewModel.getMovieDetails()
         viewModel.getSimilarMovies()
     }
 }
