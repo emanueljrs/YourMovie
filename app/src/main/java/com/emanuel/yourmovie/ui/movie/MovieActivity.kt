@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.emanuel.yourmovie.R
 import com.emanuel.yourmovie.databinding.ActivityMovieBinding
 import com.squareup.picasso.Picasso
 
@@ -36,8 +37,13 @@ class MovieActivity : AppCompatActivity() {
                 binding.textViewMovieTitle.text = movie.title
                 binding.textViewLikes.text = "${movie.vote_count} likes"
                 binding.textViewPopularity.text = "${movie.popularity} views"
-                Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}")
-                    .into(binding.imageViewMovie)
+                if (movie.poster_path != null) {
+                    Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}")
+                        .into(binding.imageViewMovie)
+                } else {
+                    binding.imageViewMovie.setImageResource(R.drawable.ic_baseline_broken)
+                }
+
             }
         }
 

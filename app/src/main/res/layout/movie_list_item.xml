@@ -19,18 +19,19 @@
 
     <TextView
         android:id="@+id/textViewListMovieName"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageViewListMovie"
         app:layout_constraintTop_toTopOf="@id/imageViewListMovie"
         tools:text="Edward Scissorhands"/>
 
     <TextView
-        android:id="@+id/textViewListMovieYear"
+        android:id="@+id/textViewListMovieReleaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -46,7 +47,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginStart="8dp"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/textViewListMovieYear"
+        app:layout_constraintStart_toEndOf="@id/textViewListMovieReleaseDate"
         app:layout_constraintTop_toBottomOf="@id/textViewListMovieName"
         tools:text="Drama, Fantasy"/>
 

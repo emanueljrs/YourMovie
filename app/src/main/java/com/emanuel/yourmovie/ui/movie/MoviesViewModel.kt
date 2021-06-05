@@ -7,6 +7,7 @@ import com.emanuel.yourmovie.data.TheMovieApi
 import com.emanuel.yourmovie.data.model.Movie
 import com.emanuel.yourmovie.data.model.SimilarMovies
 import com.emanuel.yourmovie.data.response.MovieBodyResponse
+import com.emanuel.yourmovie.data.response.SimilarMoviesBodyResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,11 +19,10 @@ class MoviesViewModel : ViewModel() {
      val moviesLiveData: MutableLiveData<Movie> = MutableLiveData()
 
     fun getMovieDetails() {
-        TheMovieApi.retrofit.getMovieDetails(move_id = 567189).enqueue(object: Callback<MovieBodyResponse>{
+        TheMovieApi.retrofit.getMovieDetails().enqueue(object: Callback<MovieBodyResponse>{
             override fun onResponse(call: Call<MovieBodyResponse>, response: Response<MovieBodyResponse>) {
                 if (response.isSuccessful) {
                     moviesLiveData.value = response.body()?.getMovie()
-                    Log.e("Foto", "${response.body()?.poster_path}")
                 } else {
                     Log.i("Falha", "${response.code()}")
                 }
@@ -36,38 +36,33 @@ class MoviesViewModel : ViewModel() {
     }
 
     fun getSimilarMovies() {
-        similarMoviesLiveData.value = getFakeSimiliarMovies()
+
+        TheMovieApi.retrofit.getSimilarMovies().enqueue(object : Callback<SimilarMoviesBodyResponse> {
+            override fun onResponse(
+                call: Call<SimilarMoviesBodyResponse>,
+                response: Response<SimilarMoviesBodyResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val similarMovies: MutableList<SimilarMovies> = mutableListOf()
+
+                    response.body()?.let { similarMoviesBodyResponse ->
+                        for (result in similarMoviesBodyResponse.results) {
+                            val similar = result.getSimilarMovies()
+                            similarMovies.add(similar)
+                        }
+                    }
+                    Log.i("Succe", "$similarMovies")
+                    similarMoviesLiveData.value = similarMovies
+                } else {
+                    Log.i("Falha", "${response.code()}")
+                }
+
+            }
+
+            override fun onFailure(call: Call<SimilarMoviesBodyResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
-
-    private fun getFakeSimiliarMovies(): List<SimilarMovies> {
-        return listOf(
-            SimilarMovies(
-                "Edward Scissorhands",
-                "1990",
-                "Drama, Fanatsy"
-            ),
-            SimilarMovies(
-                "Ed Wood",
-                "1994",
-                "Comedy, Drama"
-            ),
-            SimilarMovies(
-                "A Nightmare on Elm Street",
-                "1984",
-                "Horror"
-            ),
-            SimilarMovies(
-                "A Nightmare on Elm Street",
-                "1984",
-                "Horror"
-            ),
-            SimilarMovies(
-                "A Nightmare on Elm Street",
-                "1984",
-                "Horror"
-            ),
-        )
-
-    }
-
 }

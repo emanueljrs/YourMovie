@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.emanuel.yourmovie.data.model.SimilarMovies
 import com.emanuel.yourmovie.databinding.MovieListItemBinding
+import com.squareup.picasso.Picasso
 
 class MoviesAdapter(
-    val similiarMovies: List<SimilarMovies>
+    private val similarMovies: List<SimilarMovies>
 ) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private lateinit var binding: MovieListItemBinding
@@ -18,21 +19,22 @@ class MoviesAdapter(
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.bind(similiarMovies[position])
+        holder.bind(similarMovies[position])
     }
 
-    override fun getItemCount(): Int = similiarMovies.size
+    override fun getItemCount(): Int = similarMovies.size
 
     class MoviesViewHolder(binding: MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val name = binding.textViewListMovieName
-        val year = binding.textViewListMovieYear
-        val category = binding.textViewListMovieCategory
+        val title = binding.textViewListMovieName
+        val release_date = binding.textViewListMovieReleaseDate
+        val poster_path = binding.imageViewListMovie
 
-        fun bind(movies: SimilarMovies) {
-            name.text = movies.name
-            year.text = movies.year
-            category.text = movies.category
+
+        fun bind(movie: SimilarMovies) {
+            title.text = movie.title
+            release_date.text = movie.release_date.substring(0, 4)
+            Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}").into(poster_path)
         }
     }
 }

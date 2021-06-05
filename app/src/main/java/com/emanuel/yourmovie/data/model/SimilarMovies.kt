@@ -1,7 +1,9 @@
 package com.emanuel.yourmovie.data.model
 
 data class SimilarMovies(
-    val name: String,
-    val year: String,
-    val category: String
+    val id: Int,
+    val title: String,
+    val release_date: String,
+    val poster_path: String?
+    //val category: String
 )
