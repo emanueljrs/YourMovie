@@ -35,6 +35,7 @@ class MoviesAdapter(
             title.text = movie.title
             release_date.text = movie.release_date.substring(0, 4)
             Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}").into(poster_path)
+
         }
     }
 }

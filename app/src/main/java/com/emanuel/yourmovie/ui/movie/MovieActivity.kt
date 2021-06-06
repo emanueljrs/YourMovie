@@ -21,6 +21,7 @@ class MovieActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
         val viewModel: MoviesViewModel by viewModels()
 
         viewModel.similarMoviesLiveData.observe(this) {
