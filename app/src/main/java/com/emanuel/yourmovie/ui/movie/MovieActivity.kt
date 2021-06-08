@@ -19,12 +19,11 @@ class MovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.toolBarMovie.title = ""
+        binding.toolBarMovie.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24)
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
         val viewModel: MoviesViewModel by viewModels()
-
 
         viewModel.similarMoviesLiveData.observe(this) {
             it?.let { similarMovies ->
@@ -47,6 +46,26 @@ class MovieActivity : AppCompatActivity() {
                     binding.imageViewMovie.setImageResource(R.drawable.ic_baseline_broken)
                 }
 
+            }
+        }
+
+        viewModel.viewFlipperMovieLiveData.observe(this) {
+            it?.let { viewFlipper ->
+                binding.viewFlipperMovie.displayedChild = viewFlipper.first
+
+                viewFlipper.second?.let {
+                    binding.textViewError.text = it
+                }
+            }
+        }
+
+        viewModel.viewFlipperSimilarMoviesLiveData.observe(this) {
+            it?.let { viewFlipper ->
+                binding.viewFlipperSimilarMovies.displayedChild = viewFlipper.first
+
+                viewFlipper.second?.let {
+                    binding.textViewErrorSimilar.text = it
+                }
             }
         }
 

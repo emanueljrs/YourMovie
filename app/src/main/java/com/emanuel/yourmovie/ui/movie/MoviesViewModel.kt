@@ -1,6 +1,5 @@
 package com.emanuel.yourmovie.ui.movie
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emanuel.yourmovie.data.TheMovieApi
@@ -17,22 +16,36 @@ import retrofit2.Response
 
 class MoviesViewModel : ViewModel() {
 
-     val similarMoviesLiveData: MutableLiveData<List<SimilarMovies>> = MutableLiveData()
-     val movieLiveData: MutableLiveData<Movie> = MutableLiveData()
-     val genreLiveData: MutableLiveData<List<Genre>> = MutableLiveData()
+    val similarMoviesLiveData: MutableLiveData<List<SimilarMovies>> = MutableLiveData()
+    val viewFlipperSimilarMoviesLiveData: MutableLiveData<Pair<Int, String?>> = MutableLiveData()
+    val movieLiveData: MutableLiveData<Movie> = MutableLiveData()
+    val viewFlipperMovieLiveData: MutableLiveData<Pair<Int, String?>> = MutableLiveData()
+    val genreLiveData: MutableLiveData<List<Genre>> = MutableLiveData()
+
+    companion object {
+        private const val VIEW_FLIPPER_MOVIE = 1
+        private const val VIEW_FLIPPER_ERROR = 2
+
+        private const val API_KEY = "82d5d102552c86bbe6826720fbd38fac"
+        private const val MOVIE_ID = 299534
+    }
 
     fun getMovieDetails() {
-        TheMovieApi.retrofit.getMovieDetails().enqueue(object: Callback<MovieBodyResponse>{
+        TheMovieApi.retrofit.getMovieDetails(movie_id = MOVIE_ID, api_key = API_KEY).enqueue(object: Callback<MovieBodyResponse>{
             override fun onResponse(call: Call<MovieBodyResponse>, response: Response<MovieBodyResponse>) {
                 if (response.isSuccessful) {
                     movieLiveData.value = response.body()?.getMovie()
-                } else if (response.code() == 401) {
+                    viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_MOVIE, null)
 
+                } else if (response.code() == 401) {
+                    viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, "Error 401")
+                } else {
+                    viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, response.message())
                 }
             }
 
             override fun onFailure(call: Call<MovieBodyResponse>, t: Throwable) {
-                Log.e("Erro", "Erro de comunicação: $t")
+                viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, t.message)
             }
 
         })
@@ -40,7 +53,7 @@ class MoviesViewModel : ViewModel() {
 
     fun getSimilarMovies() {
 
-        TheMovieApi.retrofit.getSimilarMovies().enqueue(object : Callback<SimilarMoviesBodyResponse> {
+        TheMovieApi.retrofit.getSimilarMovies(movie_id = MOVIE_ID, api_key = API_KEY).enqueue(object : Callback<SimilarMoviesBodyResponse> {
             override fun onResponse(
                 call: Call<SimilarMoviesBodyResponse>,
                 response: Response<SimilarMoviesBodyResponse>
@@ -54,23 +67,25 @@ class MoviesViewModel : ViewModel() {
                             similarMovies.add(similar)
                         }
                     }
-                    Log.i("Succe", "$similarMovies")
                     similarMoviesLiveData.value = similarMovies
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_MOVIE, null)
+                } else if (response.code() == 401){
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, "Error 401")
                 } else {
-                    Log.i("Falha", "${response.code()}")
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, response.message())
                 }
 
             }
 
             override fun onFailure(call: Call<SimilarMoviesBodyResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, t.message)
             }
 
         })
     }
 
     fun getGenre() {
-        TheMovieApi.retrofit.getGenre().enqueue(object : Callback<GenresBodyResponse> {
+        TheMovieApi.retrofit.getGenre(api_key = API_KEY).enqueue(object : Callback<GenresBodyResponse> {
             override fun onResponse(
                 call: Call<GenresBodyResponse>,
                 response: Response<GenresBodyResponse>
@@ -84,13 +99,17 @@ class MoviesViewModel : ViewModel() {
                             genres.add(genre)
                         }
                     }
-                    Log.i("Succe", "$genres")
                     genreLiveData.value = genres
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_MOVIE, null)
+                } else if (response.code() == 401){
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, "Error 401")
+                } else {
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, response.message())
                 }
             }
 
             override fun onFailure(call: Call<GenresBodyResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, t.message)
             }
 
         })

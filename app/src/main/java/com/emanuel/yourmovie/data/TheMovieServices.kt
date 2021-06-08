@@ -12,18 +12,18 @@ interface TheMovieServices {
 
     @GET("movie/{movie_id}")
     fun getMovieDetails(
-        @Path("movie_id") movie_id: Int = 299534,
-        @Query("api_key") api_key: String = "82d5d102552c86bbe6826720fbd38fac"
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") api_key: String
     ): Call<MovieBodyResponse>
 
     @GET("movie/{movie_id}/similar")
     fun getSimilarMovies (
-        @Path("movie_id") movie_id: Int = 299534,
-        @Query("api_key") api_key: String = "82d5d102552c86bbe6826720fbd38fac"
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") api_key: String
     ): Call<SimilarMoviesBodyResponse>
 
     @GET("genre/movie/list")
     fun getGenre (
-        @Query("api_key") api_key: String = "82d5d102552c86bbe6826720fbd38fac"
+        @Query("api_key") api_key: String
     ): Call<GenresBodyResponse>
 }
