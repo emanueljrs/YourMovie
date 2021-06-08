@@ -41,14 +41,15 @@
         tools:text="1990"/>
 
     <TextView
-        android:id="@+id/textViewListMovieCategory"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewListMovieGenres"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="8dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/textViewListMovieReleaseDate"
         app:layout_constraintTop_toBottomOf="@id/textViewListMovieName"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="Drama, Fantasy"/>
 
     <ImageView

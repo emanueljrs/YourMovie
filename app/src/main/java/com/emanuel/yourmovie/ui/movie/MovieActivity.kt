@@ -18,22 +18,24 @@ class MovieActivity : AppCompatActivity() {
         binding = ActivityMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolBarMovie.title = ""
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         val viewModel: MoviesViewModel by viewModels()
 
+
         viewModel.similarMoviesLiveData.observe(this) {
             it?.let { similarMovies ->
                 with(binding.recyclerSimilarMovies) {
                     layoutManager = LinearLayoutManager(this@MovieActivity, RecyclerView.VERTICAL, false)
-                    adapter = MoviesAdapter(similarMovies)
+                    adapter = MoviesAdapter(similarMovies, viewModel.genreLiveData.value)
                 }
             }
         }
 
-        viewModel.moviesLiveData.observe(this) {
+        viewModel.movieLiveData.observe(this) {
             it?.let { movie ->
                 binding.textViewMovieTitle.text = movie.title
                 binding.textViewLikes.text = "${movie.vote_count} likes"
@@ -50,5 +52,7 @@ class MovieActivity : AppCompatActivity() {
 
         viewModel.getMovieDetails()
         viewModel.getSimilarMovies()
+        viewModel.getGenre()
+
     }
 }

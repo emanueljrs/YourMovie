@@ -1,4 +1,4 @@
-package com.emanuel.yourmovie.data.response
+package com.emanuel.yourmovie.data.response.movie
 
 import com.emanuel.yourmovie.data.model.Movie
 
