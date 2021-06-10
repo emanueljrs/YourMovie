@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Your Movie</string>
-    <string name="movie_error_401">Error 401</string>
-    <string name="movie_error_400">Error 400</string>
-    <string name="movie_error_500">Error 500</string>
 </resources>

@@ -15,16 +15,12 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:progressBackgroundTint="@color/purple_500" />
+            android:layout_gravity="center"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintMovie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageViewMovie"
@@ -35,14 +31,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:background="@drawable/bg_layer_gradient"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolBarMovie"
@@ -65,17 +53,16 @@
                 app:layout_constraintTop_toBottomOf="@id/imageViewMovie"
                 tools:text="The Very best Of Johnny Depp" />
 
-            <ImageButton
-                android:id="@+id/imageViewFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+            <ToggleButton
+                android:id="@+id/toggleButtonListMovieCheck"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:button="@drawable/ic_favorite_border_movie"
                 android:background="@android:color/transparent"
-                android:contentDescription="Icon Favorite"
-                android:src="@drawable/ic_favorite_movie"
+                android:textOff=""
+                android:layout_margin="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewMovie" />
+                app:layout_constraintTop_toBottomOf="@id/imageViewMovie"/>
 
             <ImageView
                 android:id="@+id/imageViewLike"
@@ -141,8 +128,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:progressBackgroundTint="@color/purple_500" />
+            android:layout_gravity="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSimilarMovies"

@@ -16,12 +16,19 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieBinding.inflate(layoutInflater)
+        //requestWindowFeature(Window.FEATURE_NO_TITLE)
+        //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(binding.root)
 
-        binding.toolBarMovie.title = ""
-        binding.toolBarMovie.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24)
-        setSupportActionBar(binding.toolBarMovie)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        configureToolbar()
+
+        binding.toggleButtonListMovieCheck.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_movie)
+            } else {
+                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_border_movie)
+            }
+        }
 
         val viewModel: MoviesViewModel by viewModels()
 
@@ -73,5 +80,12 @@ class MovieActivity : AppCompatActivity() {
         viewModel.getSimilarMovies()
         viewModel.getGenre()
 
+    }
+
+    fun configureToolbar() {
+        binding.toolBarMovie.title = ""
+        binding.toolBarMovie.setNavigationIcon(R.drawable.back_arrow_transparent_30)
+        setSupportActionBar(binding.toolBarMovie)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }
