@@ -1,153 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.movie.MovieActivity">
+    android:layout_height="match_parent">
 
-    <ViewFlipper
-        android:id="@+id/viewFlipperMovie"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.movie.MovieActivity">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintMovie"
+        <ViewFlipper
+            android:id="@+id/viewFlipperMovie"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="400dp">
 
-            <ImageView
-                android:id="@+id/imageViewMovie"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"/>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolBarMovie"
-                android:layout_width="0dp"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintMovie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewMovie"
+                    android:layout_width="0dp"
+                    android:layout_height="300dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolBarMovie"
+                    android:layout_width="0dp"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    android:fitsSystemWindows="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewMovieTitle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageViewMovie"
+                    tools:text="The Very best Of Johnny Depp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButtonListMovieCheck"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/ic_favorite_border_movie"
+                    android:textOff=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageViewMovie" />
+
+                <ImageView
+                    android:id="@+id/imageViewLike"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_favorite_movie"
+                    app:layout_constraintEnd_toStartOf="@id/textViewLikes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewLikes" />
+
+                <TextView
+                    android:id="@+id/textViewLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewLike"
+                    app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
+                    tools:text="1.2k Likes" />
+
+                <ImageView
+                    android:id="@+id/imageViewPopularity"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="24dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_video"
+                    app:layout_constraintStart_toEndOf="@id/textViewLikes"
+                    app:layout_constraintTop_toTopOf="@id/textViewPopularity" />
+
+                <TextView
+                    android:id="@+id/textViewPopularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewPopularity"
+                    app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
+                    tools:text="1.2k views" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textViewMovieTitle"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:id="@+id/textViewError"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewMovie"
-                tools:text="The Very best Of Johnny Depp" />
+                tools:text="Error 401" />
 
-            <ToggleButton
-                android:id="@+id/toggleButtonListMovieCheck"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:button="@drawable/ic_favorite_border_movie"
-                android:background="@android:color/transparent"
-                android:textOff=""
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:id="@+id/viewFlipperSimilarMovies"
+            android:layout_width="match_parent"
+            android:layout_height="460dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSimilarMovies"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewMovie"/>
-
-            <ImageView
-                android:id="@+id/imageViewLike"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_favorite_movie"
-                app:layout_constraintEnd_toStartOf="@id/textViewLikes"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textViewLikes" />
+                app:layout_constraintTop_toBottomOf="@id/constraintMovie"
+                tools:listitem="@layout/movie_list_item" />
 
             <TextView
-                android:id="@+id/textViewLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/imageViewLike"
-                app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
-                tools:text="1.2k Likes" />
+                android:id="@+id/textViewErrorSimilar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Erro 401" />
 
-            <ImageView
-                android:id="@+id/imageViewPopularity"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="24dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_video"
-                app:layout_constraintStart_toEndOf="@id/textViewLikes"
-                app:layout_constraintTop_toTopOf="@id/textViewPopularity" />
+        </ViewFlipper>
 
-            <TextView
-                android:id="@+id/textViewPopularity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/imageViewPopularity"
-                app:layout_constraintTop_toBottomOf="@id/textViewMovieTitle"
-                tools:text="1.2k views" />
+    </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textViewError"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:gravity="center"
-            tools:text="Error 401"/>
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:id="@+id/viewFlipperSimilarMovies"
-        android:layout_width="match_parent"
-        android:layout_height="460dp">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSimilarMovies"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintMovie"
-            tools:listitem="@layout/movie_list_item" />
-
-        <TextView
-            android:id="@+id/textViewErrorSimilar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            tools:text="Erro 401" />
-
-    </ViewFlipper>
-
-</LinearLayout>
+</ScrollView>
