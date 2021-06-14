@@ -8,14 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".ui.movie.MovieActivity">
 
         <ViewFlipper
             android:id="@+id/viewFlipperMovie"
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="450dp">
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -25,13 +25,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintMovie"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageViewMovie"
                     android:layout_width="0dp"
-                    android:layout_height="300dp"
-                    android:scaleType="fitXY"
+                    android:layout_height="350dp"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +49,7 @@
 
                 <TextView
                     android:id="@+id/textViewMovieTitle"
-                    android:layout_width="200dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -76,7 +76,7 @@
                     android:layout_height="18dp"
                     android:layout_marginStart="8dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_favorite_movie"
+                    android:src="@drawable/ic_movie_like_24"
                     app:layout_constraintEnd_toStartOf="@id/textViewLikes"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/textViewLikes" />
@@ -129,7 +129,7 @@
         <ViewFlipper
             android:id="@+id/viewFlipperSimilarMovies"
             android:layout_width="match_parent"
-            android:layout_height="460dp">
+            android:layout_height="418dp">
 
             <ProgressBar
                 android:layout_width="wrap_content"

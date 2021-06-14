@@ -11,14 +11,13 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
 
-
         <!-- Customize your theme here. -->
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.YourMovie">
         <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>

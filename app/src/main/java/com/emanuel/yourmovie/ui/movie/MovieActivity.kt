@@ -16,8 +16,6 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieBinding.inflate(layoutInflater)
-        //requestWindowFeature(Window.FEATURE_NO_TITLE)
-        //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(binding.root)
 
         configureToolbar()
@@ -84,7 +82,7 @@ class MovieActivity : AppCompatActivity() {
 
     fun configureToolbar() {
         binding.toolBarMovie.title = ""
-        binding.toolBarMovie.setNavigationIcon(R.drawable.back_arrow_transparent_30)
+        binding.toolBarMovie.setNavigationIcon(R.drawable.back_arrow_30)
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
