@@ -3,6 +3,7 @@ package com.emanuel.yourmovie.ui.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.emanuel.yourmovie.R
 import com.emanuel.yourmovie.data.model.Genre
 import com.emanuel.yourmovie.data.model.SimilarMovies
 import com.emanuel.yourmovie.databinding.MovieListItemBinding
@@ -32,6 +33,7 @@ class MoviesAdapter(
         private val release_date = binding.textViewListMovieReleaseDate
         private val poster_path = binding.imageViewListMovie
         private val genreMovie = binding.textViewListMovieGenres
+        private val toggleButton = binding.toggleButtonListMovieCheck
 
 
         fun bind(movie: SimilarMovies) {
@@ -48,8 +50,15 @@ class MoviesAdapter(
             for (genre in genresCommons) {
                 genresNames.add(genre.name)
             }
-
             genreMovie.text = genresNames.joinToString()
+
+            toggleButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    toggleButton.setButtonDrawable(R.drawable.ic_check_circle_24)
+                } else {
+                    toggleButton.setButtonDrawable(R.drawable.ic_check_circle_outline_24)
+                }
+            }
         }
     }
 }

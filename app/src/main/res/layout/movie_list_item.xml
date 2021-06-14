@@ -55,7 +55,7 @@
         android:id="@+id/toggleButtonListMovieCheck"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:button="@drawable/ic_check_circle_24"
+        android:button="@drawable/ic_check_circle_outline_24"
         android:background="@android:color/transparent"
         android:textOff=""
         android:layout_marginTop="8dp"
