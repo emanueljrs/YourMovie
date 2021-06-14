@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Your Movie</string>
+    <string name="error_401">Error 401</string>
+    <string name="error_not_treated">Error Not Treated</string>
+    <string name="error_500">Error Catastrophic</string>
+    <string name="likes">likes</string>
+    <string name="views">views</string>
 </resources>

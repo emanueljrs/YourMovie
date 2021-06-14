@@ -38,8 +38,8 @@ class MovieActivity : AppCompatActivity() {
         viewModel.movieLiveData.observe(this) {
             it?.let { movie ->
                 binding.textViewMovieTitle.text = movie.title
-                binding.textViewLikes.text = "${movie.vote_count} likes"
-                binding.textViewPopularity.text = "${movie.popularity} views"
+                binding.textViewLikes.text = "${movie.vote_count} " + getString(R.string.likes)
+                binding.textViewPopularity.text = "${movie.popularity} " + getString(R.string.views)
                 if (movie.poster_path != null) {
                     Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}")
                         .into(binding.imageViewMovie)
@@ -55,7 +55,7 @@ class MovieActivity : AppCompatActivity() {
                 binding.viewFlipperMovie.displayedChild = viewFlipper.first
 
                 viewFlipper.second?.let {
-                    binding.textViewError.text = it
+                    binding.textViewError.text = getString(it)
                 }
             }
         }
@@ -65,7 +65,7 @@ class MovieActivity : AppCompatActivity() {
                 binding.viewFlipperSimilarMovies.displayedChild = viewFlipper.first
 
                 viewFlipper.second?.let {
-                    binding.textViewErrorSimilar.text = it
+                    binding.textViewErrorSimilar.text = getString(it)
                 }
             }
         }

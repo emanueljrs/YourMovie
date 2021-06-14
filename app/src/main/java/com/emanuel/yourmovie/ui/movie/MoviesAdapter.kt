@@ -27,19 +27,19 @@ class MoviesAdapter(
 
     override fun getItemCount(): Int = similarMovies.size
 
-    class MoviesViewHolder(binding: MovieListItemBinding, val genresList: List<Genre>?) : RecyclerView.ViewHolder(binding.root) {
+    class MoviesViewHolder(binding: MovieListItemBinding, private val genresList: List<Genre>?) : RecyclerView.ViewHolder(binding.root) {
 
         private val title = binding.textViewListMovieName
-        private val release_date = binding.textViewListMovieReleaseDate
-        private val poster_path = binding.imageViewListMovie
+        private val releaseDate = binding.textViewListMovieReleaseDate
+        private val posterPath = binding.imageViewListMovie
         private val genreMovie = binding.textViewListMovieGenres
         private val toggleButton = binding.toggleButtonListMovieCheck
 
 
         fun bind(movie: SimilarMovies) {
             title.text = movie.title
-            release_date.text = movie.release_date.substring(0, 4)
-            Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}").into(poster_path)
+            releaseDate.text = movie.release_date.substring(0, 4)
+            Picasso.get().load("http://image.tmdb.org/t/p/w500${movie.poster_path}").into(posterPath)
 
             var genresCommons: List<Genre> = mutableListOf()
             if (genresList != null) {
