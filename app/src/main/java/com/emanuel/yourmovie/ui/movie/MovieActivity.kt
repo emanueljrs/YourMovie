@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emanuel.yourmovie.R
+import com.emanuel.yourmovie.data.repository.MoviesApiDataSource
 import com.emanuel.yourmovie.databinding.ActivityMovieBinding
 import com.squareup.picasso.Picasso
 
@@ -19,16 +20,11 @@ class MovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configureToolbar()
+        changeIconMovieFavorite()
 
-        binding.toggleButtonListMovieCheck.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_movie)
-            } else {
-                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_border_movie)
-            }
+        val viewModel: MoviesViewModel by viewModels {
+            MoviesViewModel.ViewModelFactory(MoviesApiDataSource())
         }
-
-        val viewModel: MoviesViewModel by viewModels()
 
         viewModel.similarMoviesLiveData.observe(this) {
             it?.let { similarMovies ->
@@ -80,10 +76,20 @@ class MovieActivity : AppCompatActivity() {
 
     }
 
-    fun configureToolbar() {
+    private fun configureToolbar() {
         binding.toolBarMovie.title = ""
         binding.toolBarMovie.setNavigationIcon(R.drawable.back_arrow_30)
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun changeIconMovieFavorite() {
+        binding.toggleButtonListMovieCheck.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_movie)
+            } else {
+                binding.toggleButtonListMovieCheck.setButtonDrawable(R.drawable.ic_favorite_border_movie)
+            }
+        }
     }
 }
