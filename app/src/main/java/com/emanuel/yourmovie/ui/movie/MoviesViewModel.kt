@@ -35,11 +35,11 @@ class MoviesViewModel(private val dataSource: MoviesRepository) : ViewModel() {
                     if (result.statusCode == 401) {
                         viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401)
                     } else {
-                        viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_not_treated)
+                        viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_404)
                     }
                 }
                 is MoviesResult.ServerError -> {
-                    viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_500)
+                    viewFlipperMovieLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_failure)
                 }
             }
         }
@@ -56,11 +56,11 @@ class MoviesViewModel(private val dataSource: MoviesRepository) : ViewModel() {
                     if (result.statusCode == 401) {
                         viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401)
                     } else {
-                        viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_not_treated)
+                        viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_404)
                     }
                 }
                 is MoviesResult.ServerError -> {
-                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_500)
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_failure)
                 }
             }
         }
@@ -77,11 +77,11 @@ class MoviesViewModel(private val dataSource: MoviesRepository) : ViewModel() {
                     if (result.statusCode == 401) {
                         viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_401)
                     } else {
-                        viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_not_treated)
+                        viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_404)
                     }
                 }
                 is MoviesResult.ServerError -> {
-                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_500)
+                    viewFlipperSimilarMoviesLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.error_failure)
                 }
             }
         }
