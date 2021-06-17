@@ -1,4 +1,4 @@
-![Logo of the project](http://logo_link)
+![Logo of the project](https://github.com/emanueljrs/YourMovie/blob/master/readme_images/logo_your_movie.png)
 
 ## YourMovie
  
