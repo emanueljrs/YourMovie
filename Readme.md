@@ -15,6 +15,7 @@ A arquitetura utilizada foi a MVVM muito recomendada pelo Google.
 Aqui estão as tecnologias usadas no projeto.
 
 * Kotlin version 1.5.10
+* ViewBinding
 * ViewModel version 2.3.1
 * LiveData version 2.3.1
 * Activity KTX version 1.2.3
