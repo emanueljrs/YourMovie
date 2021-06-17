@@ -32,7 +32,7 @@ Aqui estão as tecnologias usadas no projeto.
 
 ## Desenvolvedor
 
-* Emanuel Rodrigues : @emanueljrs(https://github.com/emanueljrs)
+* **Emanuel Rodrigues** : @emanueljrs (https://github.com/emanueljrs)
 
 ## Para o time Mobile2You
 
