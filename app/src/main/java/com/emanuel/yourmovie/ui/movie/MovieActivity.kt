@@ -78,7 +78,7 @@ class MovieActivity : AppCompatActivity() {
 
     private fun configureToolbar() {
         binding.toolBarMovie.title = ""
-        binding.toolBarMovie.setNavigationIcon(R.drawable.back_arrow_30)
+        binding.toolBarMovie.setNavigationIcon(R.drawable.ic_arrow_back)
         setSupportActionBar(binding.toolBarMovie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
