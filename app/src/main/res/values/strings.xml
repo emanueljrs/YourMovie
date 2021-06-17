@@ -5,4 +5,8 @@
     <string name="error_failure">Check your internet connection.</string>
     <string name="likes">likes</string>
     <string name="views">views</string>
+    <string name="description_image_movie">Movie poster image.</string>
+    <string name="description_image_like">Image of a heart that represents likes.</string>
+    <string name="description_image_views">Image of a TV representing views.</string>
+    <string name="description_image_similar_movie">Poster of the image of a similar movie.</string>
 </resources>

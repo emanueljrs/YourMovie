@@ -36,7 +36,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    tools:src="@tools:sample/avatars"
+                    android:contentDescription="@string/description_image_movie" />
 
                 <View
                     android:layout_width="0dp"
@@ -86,9 +87,10 @@
                     android:layout_marginStart="8dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_movie_like_24"
+                    android:contentDescription="@string/description_image_like"
                     app:layout_constraintEnd_toStartOf="@id/textViewLikes"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/textViewLikes" />
+                    app:layout_constraintTop_toTopOf="@id/textViewLikes"/>
 
                 <TextView
                     android:id="@+id/textViewLikes"
@@ -108,8 +110,9 @@
                     android:layout_marginStart="24dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_video"
+                    android:contentDescription="@string/description_image_views"
                     app:layout_constraintStart_toEndOf="@id/textViewLikes"
-                    app:layout_constraintTop_toTopOf="@id/textViewPopularity" />
+                    app:layout_constraintTop_toTopOf="@id/textViewPopularity"/>
 
                 <TextView
                     android:id="@+id/textViewPopularity"
