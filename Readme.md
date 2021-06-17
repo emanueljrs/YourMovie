@@ -37,5 +37,5 @@ Aqui estão as tecnologias usadas no projeto.
 
 ## Para o time Mobile2You
 
-Quero agradecer a oportunidade de poder fazer parte desse processo seletivo, evoluímuito com ele, pois realizei tarefas as quais achava que não conseguiria fazer. Ainda não posso dizer que tenho experiência profissional (gostaria muito de começar com vocês), mas de vida tenho muita. Um cara comprometido, responsável,  muito dedicado e com vontade de aprender. Me dediquei muito para realizar este teste com excelência e acredito que tenha ficado legal.
+Quero agradecer a oportunidade de poder fazer parte desse processo seletivo, evoluímuito com ele, pois realizei tarefas as quais achava que não conseguiria fazer. Ainda não posso dizer que tenho experiência profissional **(gostaria muito de começar com vocês)**, mas de vida tenho muita. Um cara comprometido, responsável,  muito dedicado e com vontade de aprender. Me dediquei muito para realizar este teste com excelência e acredito que tenha ficado legal. Por fim gostaria de ressaltar e agradecer ao trabalho da recrutadora **Hanna Camelo** que desde o primeiro momento se mostrou disponível e me ajudou muito.
 Abraços!
